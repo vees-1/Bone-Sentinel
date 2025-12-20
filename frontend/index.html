@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>BoneSentinel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🦴 BoneSentinel</h1>
+      <p>AI-powered fracture detection from X-ray images</p>
+    </header>
+
+    <main>
+      <div class="card">
+        <!-- Upload -->
+        <input type="file" id="imageInput" accept="image/*" hidden />
+        <label for="imageInput" class="file-label">Select X-ray Image</label>
+        <p id="fileName" class="file-name">No file selected</p>
+
+        <!-- Preview -->
+        <div id="previewContainer" class="hidden">
+          <img id="previewImage" alt="X-ray preview" />
+        </div>
+
+        <!-- Analyze -->
+        <button id="analyzeBtn" class="hidden">Analyze X-ray</button>
+
+        <!-- Loader -->
+        <div id="loader" class="hidden">Analyzing image...</div>
+
+        <!-- Result -->
+        <div id="result" class="hidden">
+          <h3>Result</h3>
+          <p id="prediction"></p>
+          <p id="confidence"></p>
+        </div>
+      </div>
+
+      <p class="disclaimer">
+        ⚠️ This tool is for educational purposes only and not a medical device.
+      </p>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
