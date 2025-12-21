@@ -1,7 +1,7 @@
 # BoneSentinel 🦴  
 **Automated Fracture Detection from X-ray Images using Deep Learning**
 
-BoneSentinel is an end-to-end medical imaging project that detects abnormal bone X-rays using a convolutional neural network trained on the **MURA (Musculoskeletal Radiographs) dataset**.
+BoneSentinel is an end-to-end medical imaging project that detects abnormal bone X-rays using a convolutional neural network trained on the **NIH ChestX-ray14 dataset**.
 
 ---
 
