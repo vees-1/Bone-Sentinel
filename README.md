@@ -112,11 +112,11 @@ The current implementation prioritizes **correctness, stability, and explainabil
 ## Project Demo
 
 ### Frontend Interface
-<frontend width="1767" height="910" alt="image" src="https://github.com/user-attachments/assets/bb54f61f-c43e-46d8-b5dc-62d6812c2d0a" />
-<frontend width="1767" height="910" alt="image" src="https://github.com/user-attachments/assets/744a7789-9022-442e-8a02-db0e560e0625" />
+<img width="1767" height="910" alt="image" src="https://github.com/user-attachments/assets/bb54f61f-c43e-46d8-b5dc-62d6812c2d0a" />
+<img width="1767" height="910" alt="image" src="https://github.com/user-attachments/assets/744a7789-9022-442e-8a02-db0e560e0625" />
 
 ### Backend API
-<backend width="1767" height="910" alt="image" src="https://github.com/user-attachments/assets/2a374dc9-4362-4d8f-a2ed-8e016686fc20" />
+<img width="1767" height="910" alt="image" src="https://github.com/user-attachments/assets/2a374dc9-4362-4d8f-a2ed-8e016686fc20" />
 
 
 
