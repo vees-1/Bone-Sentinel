@@ -1,8 +1,58 @@
+# ------------------------
+# Python / Virtual Env
+# ------------------------
 venv/
+.env/
 __pycache__/
 *.pyc
-.DS_Store
-# Datasets
+*.pyo
+*.pyd
+
+# ------------------------
+# ML / Model files
+# ------------------------
+*.h5
+*.keras
+*.ckpt
+*.pt
+*.pth
+
+# ------------------------
+# Datasets (NEVER COMMIT)
+# ------------------------
 MURA-v1.1/
 data/
 datasets/
+
+# ------------------------
+# Colab / Jupyter
+# ------------------------
+.ipynb_checkpoints/
+*.ipynb
+
+# ------------------------
+# Logs / Outputs
+# ------------------------
+logs/
+runs/
+outputs/
+
+# ------------------------
+# OS / Editor
+# ------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ------------------------
+# Backend runtime files
+# ------------------------
+backend/static/*.png
+backend/static/*.jpg
+backend/static/*.jpeg
+
+# ------------------------
+# FastAPI / Uvicorn
+# ------------------------
+*.log
