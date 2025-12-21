@@ -55,14 +55,42 @@ TensorFlow Model
 
 ---
 
-## ⚙️ Training
-- Local CPU training for prototyping
-- Safe configuration (low batch size, reduced dataset)
-- Validation AUC ≈ **0.68**
-- Model saved as `best_model.keras`
+## 🧪 Training & Performance
 
-> Full GPU training (Colab/Kaggle) recommended for higher performance.
+The model was trained using **transfer learning with EfficientNetB0** on a balanced subset of the **NIH ChestX-ray14 dataset** for binary classification (Normal vs Abnormal).
 
+### 🔹 Training Setup
+- Architecture: EfficientNetB0 (ImageNet pretrained)
+- Image size: 224 × 224
+- Optimizer: Adam
+- Loss: Binary Cross-Entropy
+- Training environment: Kaggle GPU
+- Dataset: NIH ChestX-ray14 (subset for prototyping)
+
+### 🔹 Current Results (Prototype)
+| Metric | Value |
+|------|------|
+| Validation Accuracy | ~0.58 |
+| Validation AUC | ~0.58 |
+
+These results correspond to an **early-stage prototype**, trained with:
+- Frozen backbone
+- Limited epochs
+- Subsampled data
+
+### 🔹 Expected Performance with Full Training
+Based on established benchmarks and prior research on NIH ChestX-ray14:
+
+- **AUC 0.75–0.85** is achievable with:
+  - Larger training subsets
+  - Fine-tuning of deeper EfficientNet layers
+  - Longer GPU training
+- Further improvements are possible using:
+  - Class-aware loss functions
+  - Data augmentation
+  - Ensemble or multi-label learning
+
+The current implementation prioritizes **correctness, stability, and explainability** over peak performance, with full-scale training planned as future work.
 ---
 
 ## 🚀 How to Run Locally
