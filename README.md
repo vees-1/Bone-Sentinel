@@ -10,6 +10,22 @@ Manual fracture detection from X-ray images is time-consuming and subject to int
 
 ---
 
+## Model Weights
+
+The trained model file (`best_model.keras`) is intentionally not included in this repository
+due to size constraints and best practices.
+
+To run the backend locally:
+
+1. Train the model using the provided training script
+2. Place the generated model at:
+
+   backend/model/best_model.keras
+
+Without this file, the FastAPI server will not start.
+
+---
+
 ## 📌 Dataset Choice & Rationale
 
 This project initially experimented with the **MURA (Musculoskeletal Radiographs) dataset** for bone abnormality detection.  
