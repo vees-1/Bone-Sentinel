@@ -90,21 +90,11 @@ Based on established benchmarks and prior research on NIH ChestX-ray14:
   - Data augmentation
   - Ensemble or multi-label learning
 
-The current implementation prioritizes **correctness, stability, and explainability** over peak performance, with full-scale training planned as future work.
+The current implementation prioritizes **correctness, stability, and explainability** over peak performance, with full-scale training planned as future work
+
 ---
+<img width="1767" height="910" alt="image" src="https://github.com/user-attachments/assets/bb54f61f-c43e-46d8-b5dc-62d6812c2d0a" />
 
-## 🚀 How to Run Locally
-
-```bash
-# Create and activate virtual environment
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run backend
-python -m uvicorn backend.main:app --reload
 
 
 
