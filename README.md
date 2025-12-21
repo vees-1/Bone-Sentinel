@@ -62,10 +62,10 @@ The pipeline remains **dataset-agnostic**, and extending it back to MURA using s
 ---
 
 ## 🏗️ System Architecture
-Frontend (HTML/CSS/JS)
-↓
-FastAPI Backend
-↓
+Frontend (HTML/CSS/JS) -->
+
+FastAPI Backend -->
+
 TensorFlow Model
 
 
