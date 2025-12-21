@@ -115,7 +115,19 @@ The current implementation prioritizes **correctness, stability, and explainabil
 <img width="1767" height="910" alt="image" src="https://github.com/user-attachments/assets/bb54f61f-c43e-46d8-b5dc-62d6812c2d0a" />
 <img width="1767" height="910" alt="image" src="https://github.com/user-attachments/assets/744a7789-9022-442e-8a02-db0e560e0625" />
 
-### Backend API
+### Backend API (FastAPI)
+
+The backend is implemented using **FastAPI** and serves a deep learning model for
+bone abnormality detection from X-ray images.
+
+Key features:
+- REST API with `/predict` endpoint
+- Multipart image upload support
+- Real-time inference using a trained CNN model
+- Interactive API documentation via Swagger UI
+
+The screenshot above shows the auto-generated OpenAPI interface,
+allowing easy testing and integration.
 <img width="1767" height="910" alt="image" src="https://github.com/user-attachments/assets/2a374dc9-4362-4d8f-a2ed-8e016686fc20" />
 
 
