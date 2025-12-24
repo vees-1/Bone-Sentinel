@@ -1,11 +1,11 @@
-# BoneSentinel 🦴  
+# BoneSentinel 
 **Automated Fracture Detection from X-ray Images using Deep Learning**
 
 BoneSentinel is an end-to-end medical imaging project that detects abnormal bone X-rays using a convolutional neural network trained on the **NIH ChestX-ray14 dataset**.
 
 
 
-## 🔍 Problem Statement
+## Problem Statement
 Manual fracture detection from X-ray images is time-consuming and subject to inter-observer variability. BoneSentinel aims to assist clinicians by providing an automated abnormality detection system.
 
 
@@ -26,7 +26,7 @@ Without this file, the FastAPI server will not start.
 
 
 
-## 📌 Dataset Choice & Rationale
+## Dataset Choice & Rationale
 
 This project initially experimented with the **MURA (Musculoskeletal Radiographs) dataset** for bone abnormality detection.  
 While MURA is clinically relevant, it presents several practical challenges for efficient prototyping:
@@ -53,7 +53,7 @@ The pipeline remains **dataset-agnostic**, and extending it back to MURA using s
 
 
 
-## 🧠 Model
+## Model
 - **EfficientNetB0** (transfer learning)
 - Binary classification head
 - Loss: Binary Cross-Entropy
@@ -61,7 +61,7 @@ The pipeline remains **dataset-agnostic**, and extending it back to MURA using s
 
 
 
-## 🏗️ System Architecture
+## System Architecture
 Frontend (HTML/CSS/JS) -->
 
 FastAPI Backend -->
@@ -71,11 +71,11 @@ TensorFlow Model
 
 
 
-## 🧪 Training & Performance
+## Training & Performance
 
 The model was trained using **transfer learning with EfficientNetB0** on a balanced subset of the **NIH ChestX-ray14 dataset** for binary classification (Normal vs Abnormal).
 
-### 🔹 Training Setup
+### Training Setup
 - Architecture: EfficientNetB0 (ImageNet pretrained)
 - Image size: 224 × 224
 - Optimizer: Adam
@@ -83,7 +83,7 @@ The model was trained using **transfer learning with EfficientNetB0** on a balan
 - Training environment: Kaggle GPU
 - Dataset: NIH ChestX-ray14 (subset for prototyping)
 
-### 🔹 Current Results (Prototype)
+### Current Results (Prototype)
 | Metric | Value |
 |------|------|
 | Validation Accuracy | ~0.58 |
@@ -94,7 +94,7 @@ These results correspond to an **early-stage prototype**, trained with:
 - Limited epochs
 - Subsampled data
 
-### 🔹 Expected Performance with Full Training
+### Expected Performance with Full Training
 Based on established benchmarks and prior research on NIH ChestX-ray14:
 
 - **AUC 0.75–0.85** is achievable with:
