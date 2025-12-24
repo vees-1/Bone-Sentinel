@@ -1,134 +1,158 @@
-# BoneSentinel 
-**Automated Fracture Detection from X-ray Images using Deep Learning**
+# 🦴 BoneSentinel  
+**Automated Abnormality Detection in X-ray Images Using Deep Learning**
 
-BoneSentinel is an end-to-end medical imaging project that detects abnormal bone X-rays using a convolutional neural network trained on the **NIH ChestX-ray14 dataset**.
+BoneSentinel is an end-to-end medical imaging system designed to detect abnormal X-ray images using deep learning. The project implements a complete pipeline—from data preprocessing and model training to deployment using a FastAPI backend and a lightweight frontend interface.
 
-
-
-## Problem Statement
-Manual fracture detection from X-ray images is time-consuming and subject to inter-observer variability. BoneSentinel aims to assist clinicians by providing an automated abnormality detection system.
+The primary objective is to demonstrate a **stable, explainable, and deployable medical AI workflow**, rather than maximizing benchmark performance at this stage.
 
 
+## 📌 Problem Statement
 
-## Model Weights
-
-The trained model file (`best_model.keras`) is intentionally not included in this repository
-due to size constraints and best practices.
-
-To run the backend locally:
-
-1. Train the model using the provided training script
-2. Place the generated model at:
-
-   backend/model/best_model.keras
-
-Without this file, the FastAPI server will not start.
+Manual interpretation of X-ray images is time-consuming and prone to inter-observer variability, especially under high clinical workload. BoneSentinel aims to assist clinicians by providing an automated abnormality detection system that can serve as a **decision-support tool**, improving efficiency and consistency.
 
 
+## 🧠 Model Overview
 
-## Dataset Choice & Rationale
-
-This project initially experimented with the **MURA (Musculoskeletal Radiographs) dataset** for bone abnormality detection.  
-While MURA is clinically relevant, it presents several practical challenges for efficient prototyping:
-
-- Labels are provided at the **study level**, not the individual image level  
-- Many images within an abnormal study may appear visually normal  
-- High label noise makes training unstable on limited compute resources  
-
-As a result, achieving reliable convergence without large-scale GPU training and study-level aggregation is difficult.
-
-To ensure a **stable, reproducible, and well-evaluated pipeline**, the project was transitioned to the **NIH ChestX-ray14 dataset**, which offers:
-
-- **Image-level labels** (clean supervision)
-- Large-scale, diverse data
-- Well-established benchmarks
-- Better suitability for transfer learning and explainability (Grad-CAM)
-
-This switch allows the project to focus on:
-- Model performance
-- Explainability
-- End-to-end deployment (FastAPI + frontend)
-
-The pipeline remains **dataset-agnostic**, and extending it back to MURA using study-level aggregation is planned as future work.
-
-
-
-## Model
-- **EfficientNetB0** (transfer learning)
-- Binary classification head
-- Loss: Binary Cross-Entropy
-- Metrics: Accuracy, AUC
-
-
-
-## System Architecture
-Frontend (HTML/CSS/JS) -->
-
-FastAPI Backend -->
-
-TensorFlow Model
-
-
-
-
-## Training & Performance
-
-The model was trained using **transfer learning with EfficientNetB0** on a balanced subset of the **NIH ChestX-ray14 dataset** for binary classification (Normal vs Abnormal).
-
-### Training Setup
-- Architecture: EfficientNetB0 (ImageNet pretrained)
-- Image size: 224 × 224
+- Architecture: **EfficientNetB0** (ImageNet pretrained)
+- Task: Binary classification (Normal vs Abnormal)
+- Loss Function: Binary Cross-Entropy
 - Optimizer: Adam
-- Loss: Binary Cross-Entropy
-- Training environment: Kaggle GPU
-- Dataset: NIH ChestX-ray14 (subset for prototyping)
+- Evaluation Metrics: Accuracy, AUC (ROC)
 
-### Current Results (Prototype)
-| Metric | Value |
-|------|------|
+
+## 🏗️ System Architecture
+
+Frontend (HTML / CSS / JavaScript)  
+↓  
+FastAPI Backend (REST API)  
+↓  
+TensorFlow / Keras Model  
+
+- The frontend allows users to upload X-ray images.
+- The backend handles preprocessing and inference.
+- The trained deep learning model performs abnormality detection in real time.
+
+
+## 📂 Model Weights
+
+The trained model file (`best_model.keras`) is **intentionally excluded** from this repository due to size constraints and best practices.
+
+### To run the backend locally:
+
+1. Train the model using the provided training script.
+2. Place the generated model file at: backend/model/best_model.keras
+
+> ⚠️ Note: Without this file, the FastAPI server will not start.
+
+
+
+## 📊 Dataset Choice & Rationale
+
+### Initial Dataset: MURA (Musculoskeletal Radiographs)
+
+The project initially experimented with the **MURA dataset**, which is clinically relevant for bone abnormality detection. However, several practical challenges were encountered:
+
+- Labels are provided at the **study level**, not per image  
+- Many images in abnormal studies appear visually normal  
+- High label noise leads to unstable training on limited compute resources  
+- Effective training requires study-level aggregation and large-scale GPU usage  
+
+### Final Dataset: NIH ChestX-ray14
+
+To ensure a **reliable, reproducible, and well-evaluated prototype**, the project was transitioned to the **NIH ChestX-ray14 dataset**, which offers:
+
+- Clean **image-level labels**
+- Large-scale and diverse data
+- Well-established benchmarks
+- Better suitability for:
+  - Transfer learning
+  - Explainability techniques (e.g., Grad-CAM)
+  - Rapid experimentation and deployment
+
+The pipeline is **dataset-agnostic**, and extending it back to MURA using study-level aggregation is planned as future work.
+
+
+
+## 🚀 Training & Performance
+
+The model was trained using **transfer learning with EfficientNetB0** on a balanced subset of the NIH ChestX-ray14 dataset.
+
+### Training Configuration
+
+- Image Size: 224 × 224
+- Backbone: Frozen EfficientNetB0
+- Training Environment: Kaggle GPU
+- Epochs: Limited (prototype phase)
+- Dataset Size: Subsampled for rapid iteration
+
+### Current Prototype Results
+
+| Metric              | Value |
+|---------------------|-------|
 | Validation Accuracy | ~0.58 |
-| Validation AUC | ~0.58 |
+| Validation AUC      | ~0.58 |
 
-These results correspond to an **early-stage prototype**, trained with:
-- Frozen backbone
-- Limited epochs
-- Subsampled data
+These results reflect an **early-stage prototype**, prioritizing correctness and pipeline stability over raw performance.
 
-### Expected Performance with Full Training
-Based on established benchmarks and prior research on NIH ChestX-ray14:
+### Expected Performance (Full Training)
 
-- **AUC 0.75–0.85** is achievable with:
+Based on prior research and established benchmarks:
+
+- **AUC of 0.75–0.85** is achievable with:
   - Larger training subsets
-  - Fine-tuning of deeper EfficientNet layers
+  - Fine-tuning deeper EfficientNet layers
   - Longer GPU training
-- Further improvements are possible using:
-  - Class-aware loss functions
+- Further improvements using:
   - Data augmentation
-  - Ensemble or multi-label learning
+  - Class-aware loss functions
+  - Multi-label or ensemble approaches
 
-The current implementation prioritizes **correctness, stability, and explainability** over peak performance, with full-scale training planned as future work
 
 
-## Project Demo
+## 🧪 Backend API
 
-### Frontend Interface
-<img width="1767" height="910" alt="image" src="https://github.com/user-attachments/assets/744a7789-9022-442e-8a02-db0e560e0625" />
+The backend is implemented using **FastAPI**, serving the trained deep learning model via a REST API.
 
-### Backend API (FastAPI)
+### Key Features
 
-The backend is implemented using **FastAPI** and serves a deep learning model for
-bone abnormality detection from X-ray images.
-
-Key features:
-- REST API with `/predict` endpoint
+- `/predict` endpoint for inference
 - Multipart image upload support
-- Real-time inference using a trained CNN model
-- Interactive API documentation via Swagger UI
+- Real-time model predictions
+- Auto-generated API documentation via Swagger UI
 
-The screenshot above shows the auto-generated OpenAPI interface,
-allowing easy testing and integration.
-<img width="1767" height="910" alt="image" src="https://github.com/user-attachments/assets/2a374dc9-4362-4d8f-a2ed-8e016686fc20" />
+Once the server is running, the interactive API can be accessed at: http://localhost:8000/docs
 
+
+---
+
+## 🖥️ Frontend Interface
+
+The frontend provides a simple web interface to upload X-ray images and view predictions, enabling easy testing and demonstration of the complete pipeline.
+
+(Screenshots included in the repository)
+
+---
+
+## 🔮 Future Work
+
+- Full-scale training on NIH ChestX-ray14
+- Fine-tuning EfficientNet backbone
+- Grad-CAM visual explanations
+- Study-level aggregation for MURA dataset
+- Cloud deployment (AWS / Azure)
+- Multi-label abnormality classification
+
+---
+
+## 📎 Disclaimer
+
+This project is intended for **educational and research purposes only** and is **not approved for clinical use**.
+
+---
+
+## 👨‍💻 Author
+
+Developed as a deep learning and medical imaging project to demonstrate applied AI/ML skills, model deployment, and system design.
 
 
 
