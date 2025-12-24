@@ -3,12 +3,12 @@
 
 BoneSentinel is an end-to-end medical imaging project that detects abnormal bone X-rays using a convolutional neural network trained on the **NIH ChestX-ray14 dataset**.
 
----
+
 
 ## 🔍 Problem Statement
 Manual fracture detection from X-ray images is time-consuming and subject to inter-observer variability. BoneSentinel aims to assist clinicians by providing an automated abnormality detection system.
 
----
+
 
 ## Model Weights
 
@@ -24,7 +24,7 @@ To run the backend locally:
 
 Without this file, the FastAPI server will not start.
 
----
+
 
 ## 📌 Dataset Choice & Rationale
 
@@ -51,7 +51,7 @@ This switch allows the project to focus on:
 
 The pipeline remains **dataset-agnostic**, and extending it back to MURA using study-level aggregation is planned as future work.
 
----
+
 
 ## 🧠 Model
 - **EfficientNetB0** (transfer learning)
@@ -59,7 +59,7 @@ The pipeline remains **dataset-agnostic**, and extending it back to MURA using s
 - Loss: Binary Cross-Entropy
 - Metrics: Accuracy, AUC
 
----
+
 
 ## 🏗️ System Architecture
 Frontend (HTML/CSS/JS) -->
@@ -69,7 +69,7 @@ FastAPI Backend -->
 TensorFlow Model
 
 
----
+
 
 ## 🧪 Training & Performance
 
@@ -108,7 +108,7 @@ Based on established benchmarks and prior research on NIH ChestX-ray14:
 
 The current implementation prioritizes **correctness, stability, and explainability** over peak performance, with full-scale training planned as future work
 
----
+
 ## Project Demo
 
 ### Frontend Interface
